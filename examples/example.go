@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/utkukrl/sortedmap"
+	sortedmap "github.com/utkukrl/caelestius"
 )
 
 func main() {

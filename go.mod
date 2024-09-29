@@ -1,3 +1,3 @@
-module github.com/utkukrl/sortedmap
+module github.com/utkukrl/caelestius
 
-go 1.21.4
+go 1.22.4
