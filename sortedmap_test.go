@@ -7,9 +7,7 @@ import (
 
 func TestSortedMap(t *testing.T) {
 	t.Run("IntType", func(t *testing.T) {
-		sm := NewSortedMap(func(i, j interface{}) bool {
-			return i.(int) < j.(int)
-		})
+		sm := NewSortedMap()
 
 		sm.Add(3, 30.5)
 		sm.Add(1, 10.5)
@@ -24,7 +22,7 @@ func TestSortedMap(t *testing.T) {
 			t.Errorf("Expected value for removed key 2 is nil, but got %v", sm.Get(2))
 		}
 
-		expectedKeys := []interface{}{1, 3}
+		expectedKeys := []interface{}{3, 1}
 		keys := sm.Keys()
 		for i, key := range keys {
 			if key != expectedKeys[i] {
@@ -32,7 +30,7 @@ func TestSortedMap(t *testing.T) {
 			}
 		}
 
-		expectedValues := []interface{}{10.5, 30.5}
+		expectedValues := []interface{}{30.5, 10.5}
 		values := sm.Values()
 		for i, value := range values {
 			if value != expectedValues[i] {
@@ -49,9 +47,7 @@ func TestSortedMap(t *testing.T) {
 	})
 
 	t.Run("FloatType", func(t *testing.T) {
-		sm := NewSortedMap(func(i, j interface{}) bool {
-			return i.(float64) < j.(float64)
-		})
+		sm := NewSortedMap()
 
 		sm.Add(3.5, "three point five")
 		sm.Add(1.5, "one point five")
@@ -66,7 +62,7 @@ func TestSortedMap(t *testing.T) {
 			t.Errorf("Expected value for removed key 2.5 is nil, but got %v", sm.Get(2.5))
 		}
 
-		expectedKeys := []interface{}{1.5, 3.5}
+		expectedKeys := []interface{}{3.5, 1.5}
 		keys := sm.Keys()
 		for i, key := range keys {
 			if key != expectedKeys[i] {
@@ -74,7 +70,7 @@ func TestSortedMap(t *testing.T) {
 			}
 		}
 
-		expectedValues := []interface{}{"one point five", "three point five"}
+		expectedValues := []interface{}{"three point five", "one point five"}
 		values := sm.Values()
 		for i, value := range values {
 			if value != expectedValues[i] {
@@ -91,9 +87,7 @@ func TestSortedMap(t *testing.T) {
 	})
 
 	t.Run("StringType", func(t *testing.T) {
-		sm := NewSortedMap(func(i, j interface{}) bool {
-			return i.(string) < j.(string)
-		})
+		sm := NewSortedMap()
 
 		sm.Add("c", 30)
 		sm.Add("a", 10)
@@ -109,7 +103,7 @@ func TestSortedMap(t *testing.T) {
 			t.Errorf("Expected value for removed key 'b' is nil, but got %v", sm.Get("b"))
 		}
 
-		expectedKeys := []interface{}{"a", "c", "d"}
+		expectedKeys := []interface{}{"c", "a", "d"}
 		keys := sm.Keys()
 		for i, key := range keys {
 			if key != expectedKeys[i] {
@@ -117,7 +111,7 @@ func TestSortedMap(t *testing.T) {
 			}
 		}
 
-		expectedValues := []interface{}{10, 30, 40}
+		expectedValues := []interface{}{30, 10, 40}
 		values := sm.Values()
 		for i, value := range values {
 			if value != expectedValues[i] {
